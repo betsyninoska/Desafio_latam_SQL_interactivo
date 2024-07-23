@@ -66,8 +66,7 @@ Select correo as correo\_unico from usuarios group by correo
 
 
 
-### Agr
-### upar y contar
+### Agrupar y contar
 GROUP BY es comúnmente utilizada junto con funciones de agregación como COUNT, MAX, MIN, SUM y AVG para obtener información resumida de un conjunto de datos.
 
 En este ejercicio aprenderemos a agrupar y contar.
@@ -133,8 +132,7 @@ Crea una consulta que nos muestre cada correo una única vez junto a la cantidad
 select correo, count(\*) as repeticiones from usuarios group by correo
 
 
-### Eje
-### rcitando agrupar y contar
+### Ejercitando agrupar y contar
 ## **Ejercicio**
 Dada la siguiente **tabla empleados**
 
@@ -161,8 +159,7 @@ select departamento, count(\*) as cantidad\_empleados from empleados group by de
 
 
 
-### Agr
-### upar y sumar
+### Agrupar y sumar
 En este ejercicio agruparemos y sumaremos. La lógica de la consulta es la misma previamente mencionada, solo cambia la funcion de agrupacion a utilizar. Por ejemplo, tenemos la tabla pedidos con los siguientes datos:
 
 |**CLIENTE**|**MONTO**|
@@ -205,8 +202,7 @@ SELECT categoria, SUM(Monto) AS Monto\_Total FROM ventas GROUP BY categoria;
 
 
 
-### Agr
-### upar y promediar
+### Agrupar y promediar
 Previamente aprendimos que AVG nos permite calcular el promedio de los elementos de una columna en una tabla. En este ejercicio lo utilizaremos para calcular promedios por grupo.
 
 SELECT grupo, AVG(columna) FROM tabla GROUP by grupo
@@ -237,8 +233,7 @@ Este ejercicio tiene un supuesto importante: que no hay dos estudiantes con el m
 
 SELECT nombre\_completo, AVG(nota) as promedio\_notas FROM estudiantes GROUP by nombre\_completo
 
-### Máx
-### imo por grupo
+### Máximo por grupo
 En este ejercicio combinaremos la función de agregación MAX() con group by para poder obtener el monto mas alto de cada grupo. La sintaxis de la consulta será igual a las vistas previamente, es decir:
 
 SELECT grupo, MAX(columna) FROM tabla GROUP by grupo
@@ -271,8 +266,7 @@ Crea una consulta para calcular el monto mas alto por cada categoría. La tabla 
 SELECT categoria, MAX(monto) as monto\_mas\_alto FROM ventas GROUP by categoria
 
 
-### Mín
-### imo por grupo
+### Mínimo por grupo
 En este ejercicio combinaremos la función MIN() con GROUP BY para poder obtener el monto mas bajo de cada grupo.La sintaxis de la consulta será igual a las vistas previamente, es decir:
 
 SELECT grupo, MIN(columna) FROM tabla GROUP by grupo
@@ -305,8 +299,7 @@ Crea una consulta para calcular el monto más bajo por cada categoría. La tabla
 SELECT categoria, MIN(monto) as monto\_mas\_bajo FROM ventas GROUP by categoria
 
 
-### Fun
-### ciones de agregación y fechas
+### Funciones de agregación y fechas
 A la hora de construir informes, frecuentemente necesitaremos entregar información agrupada en un periodo de tiempo. Para lograr esto utilizaremos una combinación de GROUP BY con la función strftime.
 
 Tenemos la tabla "ventas" con la siguiente información:
@@ -351,8 +344,7 @@ SELECT SUM(monto) AS suma\_ventas , strftime("%m", fecha\_venta) AS mes FROM ven
 
 
 
-### Eje
-### rcitando funciones de agregación con fechas
+### Ejercitando funciones de agregación con fechas
 ## **Ejercicio**
 Se tiene una tabla llamada inscripciones con distintas fechas de inscripciones de un usuario a un sitio web.
 
@@ -388,8 +380,7 @@ Tip: Utiliza la función strftime con %m.
 SELECT strftime("%m", fecha\_inscripcion) AS mes, count(fecha\_inscripcion) AS cantidad\_usuarios FROM inscripciones GROUP BY strftime("%m", fecha\_inscripcion)
 
 
-### Agr
-### upando sin indicar el nombre de las columnas
+### Agrupando sin indicar el nombre de las columnas
 Cuando se trata de agrupar datos en una consulta SQL, existe una forma de evitar la redundancia de la cláusula SELECT. Por ejemplo, considera la siguiente consulta:
 
 SELECT strftime("%Y", fecha\_venta) AS año, SUM(monto) FROM ventas GROUP BY strftime("%Y", fecha\_venta)
@@ -427,8 +418,7 @@ SELECT correo, count(\*) as repeticiones FROM usuarios GROUP BY correo order by 
 
 
 
-### Agr
-### upando por múltiples columnas
+### Agrupando por múltiples columnas
 En SQL es posible agrupar por múltiples columnas utilizando la siguiente sintaxis:
 
 SELECT columna1, columna2, funcion\_agrupado(columna3) FROM tabla GROUP BY columna1, columna2
@@ -463,7 +453,7 @@ select correo, materia, avg(nota) as promedio\_notas from estudiantes group by 1
 
 
 ### Ejercicio
-### rcitando funciones de agregación con fechas
+### Ejercitando funciones de agregación con fechas
 ## **Ejercicio**
 Se tiene una tabla llamada inscripciones con distintas fechas de inscripciones de un usuario a un sitio web.
 
@@ -505,8 +495,7 @@ Tip: Utiliza la función strftime con %m.
 ###
 ###
 ###
-### Int
-### roducción a Having
+### Introducción a Having
 En SQL, la cláusula GROUP BY nos permite agrupar datos. Si queremos filtrar la información obtenida utilizaremos HAVING.
 
 HAVING se emplea para filtrar los resultados de una consulta que involucra funciones agregadas. En otras palabras, HAVING permite aplicar condiciones de filtrado a los resultados de funciones como COUNT, MAX, MIN, SUM y AVG después de que se han agrupado los datos con la cláusula GROUP BY.
@@ -605,8 +594,7 @@ HAVING COUNT(correo) > 1
 
 
 
-### Hav
-### ing y cuenta
+### Having y cuenta
 ## **Ejercicio**
 Dada la siguiente **tabla empleados**
 
@@ -637,8 +625,7 @@ having count(\*) >1
 
 
 
-### Hav
-### ing y promedio
+### Having y promedio
 ## **Ejercicio**
 Se tiene la siguiente **tabla notas**:
 
@@ -667,8 +654,7 @@ having avg(notas) >50
 
 
 
-### Hav
-### ing y order
+### Having y order
 Una vez que hemos agrupado datos utilizando la cláusula GROUP BY, es común que necesitemos ordenar esos grupos según algún criterio específico. Por lo general, queremos ordenar los grupos en función de alguna métrica agregada, como la suma, el conteo, el promedio, etc. Para hacer esto, usamos la cláusula ORDER BY junto con las funciones de agregación.
 
 El orden de las clausulas en una consulta debe ser el siguiente:
@@ -710,8 +696,7 @@ order by sum(cantidad) desc
 
 
 
-### Hav
-### ing y order 2
+### Having y order 2
 ## **Ejercicio**
 Supongamos que tienes una tabla de empleados con los siguientes datos:
 
@@ -735,8 +720,7 @@ order by avg(salario) desc
 
 
 
-### Int
-### roduccion a subconsultas
+### Introduccion a subconsultas
 Las subconsultas, también conocidas como "subqueries", nos permiten utilizar los resultados de una consulta dentro de otra consulta.
 
 Veamos un ejemplo práctico.
@@ -775,8 +759,7 @@ SELECT \* FROM empleados WHERE sueldo <= (SELECT avg(sueldo) FROM empleados)
 
 
 
-### Sub
-### consultas y where parte 1
+### Subconsultas y where parte 1
 Dentro de las subconsultas, podemos utilizar las mismas cláusulas que hemos aprendido hasta ahora, como la cláusula WHERE. Esto significa que podemos aplicar la cláusula WHERE tanto dentro de la subconsulta como fuera de ella.
 ## **Ejercicio**
 Dada la siguiente **tabla empleados**
@@ -862,8 +845,7 @@ select \* from notas where notas > (select avg(notas) from notas)
 
 
 
-### Sub
-### consultas con IN
+### Subconsultas con IN
 El operador IN es un operador muy útil en subconsultas. Para entenderlo, primero probaremos una consulta sencilla utilizandolo directamente sin subconsultas.
 
 |**PAÍS**|**CÓDIGO TELÉFONO**|
@@ -973,8 +955,7 @@ SELECT nombre from libros as nombres\_seleccionados
 WHERE libro\_id IN (SELECT libro\_id from valoraciones where valoracion\_promedio > 4)
 
 
-### Sub
-### consultas con IN parte 3
+### Subconsultas con IN parte 3
 ## **Ejercicio**
 Se tiene una tabla de **pacientes**
 
@@ -1002,8 +983,7 @@ date(fecha\_consulta) < '2023-05-16')
 
 
 
-### Sub
-### consultas en el FROM
+### Subconsultas en el FROM
 Las subconsultas, también conocidas como "subqueries", nos permiten utilizar los resultados de una consulta dentro de otra consulta. En los ejercicios anteriores utilizamos las subconsultas dentro de la claúsula WHERE, pero también es posible utilizarlas dentro de otras claúsulas. En este ejercicio abordaremos como utilizarla dentro de FROM
 
 Una subconsulta en el FROM tiene la siguiente forma.
@@ -1106,8 +1086,7 @@ GROUP BY jugador\_id
 
 
 
-### Sub
-### consultas con IN parte 2
+### Subconsultas con IN parte 2
 ## **Ejercicio**
 Se tiene la tabla **libros**
 
@@ -1136,8 +1115,7 @@ select nombre as nombres\_seleccionados from libros where libro\_id in (select l
 
 
 
-### Int
-### roducción a la cláusula unión de SQL
+### Introducción a la cláusula unión de SQL
 El operador **UNION** en SQL se utiliza para combinar el resultado de dos o más SELECT en un solo conjunto de resultados.
 
 La sintaxis básica de UNION es la siguiente:
@@ -1226,8 +1204,7 @@ SELECT nombre as nombres
 FROM Profesores ;
 
 
-### **Eli**
-### **minar duplicados con union**
+### **Eliminar duplicados con union**
 El operador *UNION* se utiliza para combinar los resultados de dos o más consultas SELECT en un solo conjunto de resultados. La principal característica de UNION es que elimina las filas duplicadas del resultado final.
 ## **Ejercicio**
 Se tiene la tabla **usuarios** con la siguiente información:
@@ -1262,8 +1239,7 @@ select email as correos\_unicos from clientes
 
 
 
-### Uni
-### on vs Union all
+### Union vs Union all
 En los ejercicios anteriores aprendimos que el operador **UNION** se utiliza para combinar los resultados de dos o más consultas SELECT en un solo conjunto de resultados, eliminando las filas duplicadas.
 
 Si queremos obtener las filas duplicadas en el resultado, utilizaremos el operador UNION ALL.
@@ -1326,8 +1302,7 @@ Crea una consulta que combine ambas tablas incluyendo las filas duplicadas.
 SELECT \* FROM empleados1 UNION ALL SELECT \* FROM empleados2;
 
 
-### Int
-### roducción a intersección
+### Introducción a intersección
 El operador **INTERSECT** se utiliza para combinar dos SELECT y devolver los resultados que se encuentran en ambas consultas.
 
 Por ejemplo, si tenemos las siguientes dos tablas, clientes1 y clientes2:
@@ -1393,8 +1368,7 @@ Lista2:
 SELECT cliente FROM lista1 INTERSECT SELECT cliente FROM lista2
 
 
-### El 
-### operador Except
+### El operador Except
 El operador **EXCEPT** en SQL se utiliza para devolver todas las filas en la primera consulta que no están presentes en la segunda consulta. En otras palabras, EXCEPT devuelve solo las filas, que son parte de la primera consulta pero no de la segunda consulta.
 
 Por ejemplo, si tenemos dos tablas, 'Tabla1' y 'Tabla2', que contienen los siguientes datos:
@@ -1451,8 +1425,7 @@ SELECT nombre FROM empleados EXCEPT SELECT nombre FROM gerentes;
 
 
 
-### Aña
-### dir un registro en una tabla
+### Añadir un registro en una tabla
 Con SQL podemos ingresar datos nuevos a tablas existentes. Para lograrlo utilizaremos la instrucción INSERT .
 
 La instrucción INSERT la acompañaremos de las palabra clave INTO para especificar en qué tabla queremos insertar un valor y VALUES para especificar los valores que queremos insertar.
@@ -1484,8 +1457,7 @@ Crea un nuevo **usuario** con los siguientes datos:
 INSERT INTO usuarios VALUES (7, 'Lucía', 'Sánchez', 'luciasanchez@outlook.com','555-5555');
 
 
-### Aña
-### dir un registro en una tabla parte 2
+### Añadir un registro en una tabla parte 2
 ## **Ejercicio**
 Se tiene la tabla **productos**:
 
@@ -1505,8 +1477,7 @@ Inserta un nuevo producto con los siguientes datos:
 
 insert into productos values (7,'Bolso',1000,10)
 
-### Esp
-### ecificando valores nulos
+### Especificando valores nulos
 A la hora de insertar datos, si hay un valor que no conocemos, o es un valor que no queremos especificar, podemos ingresar un valor nulo.
 
 Ejemplo: Se tiene la tabla productos:
@@ -1540,8 +1511,7 @@ Inserta un nuevo producto con los siguientes datos:
 INSERT INTO productos VALUES (7, 'Bolso', 1000, NULL);
 
 
-### Aña
-### dir un registro especificando columnas
+### Añadir un registro especificando columnas
 A la hora de insertar datos es posible mencionar específicamente las columnas que se van a insertar, en lugar de mencionar todos los valores en el orden en que se definen en la tabla.
 
 Veamos un ejemplo:
@@ -1587,8 +1557,7 @@ Prueba agregando los siguientes datos a la tabla usuarios, puedes notar que tien
 INSERT INTO usuarios (id, apellido, nombre, telefono, email) VALUES (7,'Sánchez','Lucía', '333-3333','luciasanchez@outlook.com');
 
 
-### Aña
-### dir un registro especificando solo algunas columnas
+### Añadir un registro especificando solo algunas columnas
 Otro beneficio de especificar las columnas al momento de insertar datos es que se insertarán valores nulos en las columnas no mencionadas automáticamente.
 
 Supongamos que tenemos una tabla llamada productos:
@@ -1611,8 +1580,7 @@ Inserta un nuevo item en la tabla productos con los siguientes datos:
 - stock: 10
 
 
-### **Aña**
-### **dir fecha de hoy a un registro**
+### **Añadir fecha de hoy a un registro**
 Si queremos insertar la fecha actual al momento de crear un registro, podemos utilizar la función CURRENT\_DATE para obtenerla.
 
 Ejemplo: INSERT INTO usuarios (nombre, fecha\_creacion) VALUES ('Gonzalo', CURRENT\_DATE);
@@ -1635,8 +1603,7 @@ Si tenemos la tabla productos, inserta un nuevo producto con los siguientes dato
 INSERT INTO productos (nombre, stock, fecha) VALUES ('Bolso', 10,CURRENT\_DATE);
 
 
-### Aña
-### diendo fecha y hora al insertar
+### Añadiendo fecha y hora al insertar
 Si queremos insertar una fecha cualquiera al momento de crear un registro, simplemente debemos hacerlo especificando la fecha en el formato esperado.
 
 El formato de fecha es: YYYY-MM-DD, o sea año-mes-día, donde el año es de 4 dígitos, el mes es de 2 dígitos y el día es de 2 dígitos.
@@ -1663,8 +1630,7 @@ La fecha del producto debe ser del primero de enero del 2023.
 INSERT INTO productos (nombre, stock,fecha) VALUES ('Bolso', 10, '2023-01-01');
 
 
-### Aña
-### dir múltiples valores
+### Añamúltiples valores
 Podemos ingresar varios registros en una tabla en una sola sentencia INSERT. Para lograrlo, debemos especificar los valores de cada registro separados por comas.
 
 Por ejemplo, si tenemos una tabla llamada ventas con las columnas producto, cantidad y precio, podemos agregar varios registros a la tabla usando:
@@ -1682,8 +1648,7 @@ Inserta los siguientes registros en la tabla ventas:
 INSERT INTO ventas VALUES ('Gorro', 5, 1000), ('Camiseta', 10, 500), ('Pantalón', 8, 1500);
 
 
-### Cre
-### ar un registro con un campo autoincremental
+### Crear un registro con un campo autoincremental
 En una base de datos SQL, es posible agilizar el proceso de inserción de datos en una tabla mediante el uso de un campo autoincremental. Este tipo de campo es especialmente útil cuando se trata de gestionar identificadores únicos, como por ejemplo el campo "id" de una tabla. La característica de autoincremento se logra empleando la cláusula AUTOINCREMENT en la definición del campo.
 
 Para ilustrar este proceso, consideremos una tabla llamada "empleados" con tres columnas: "id" (autoincremental), "nombre" y "apellido". Esta es la forma en que se crea la tabla:
@@ -1703,8 +1668,7 @@ Dada la **tabla empleados** con las columnas id, nombre y apellido, crea un nu
 INSERT INTO empleados (nombre, apellido) VALUES ('Jane', 'Smith');
 
 
-### Aña
-### dir un registro asumiendo un valor por defecto
+### Añadir un registro asumiendo un valor por defecto
 Al crear una tabla en SQL, puedes asignar valores predeterminados a sus columnas. Esto implica que al insertar nuevos datos, si no se proporciona un valor específico para una columna, se usará automáticamente el valor por defecto asignado.
 
 Supongamos que queremos crear una tabla llamada "Productos" con las siguientes columnas:
@@ -1746,8 +1710,7 @@ Borra todos los datos de la tabla 'productos'.
 
 Delete fron productos
 
-### Bor
-### rar un registro con where
+### Borrar un registro con where
 La sentencia DELETE se utiliza para eliminar datos de una tabla. Si queremos eliminar filas específicas en lugar de todos los datos de la tabla, podemos usar la cláusula WHERE junto con la sentencia DELETE. Esto nos permite especificar una condición para determinar qué filas se eliminarán.
 
 Por ejemplo, si tenemos una tabla de productos y queremos eliminar solo aquellos productos cuyo precio sea igual a 1000, podemos usar la siguiente consulta:
@@ -1769,8 +1732,7 @@ Borra el usuario cuyo id sea igual a 2.
 delete from usuarios where id= 2
 
 
-### Edi
-### tar registros
+### Editar registros
 La sentencia UPDATE se utiliza para realizar modificaciones en datos ya existentes de una tabla.
 
 Se utiliza de la siguiente forma
@@ -1812,8 +1774,7 @@ UPDATE usuarios SET registrado = true;
 
 
 
-### Edi
-### tar todos los registros utilizando where
+### Editar todos los registros utilizando where
 Si queremos editar solamente algunas filas de nuestra tabla, podemos utilizar UPDATE en conjunto con WHERE. De esta forma solo se modificarán los registros que cumplan con la condición especificada.
 
 UPDATE nombre\_tabla SET nombre\_columna = nuevo\_valor WHERE condicion;
@@ -1905,8 +1866,7 @@ id = 1;
 
 
 
-### Nue
-### stra primera tabla
+### Nuestra primera tabla
 Hasta este punto, hemos aprendido cómo realizar consultas en tablas predefinidas, e incluso cómo insertar datos a las tablas, pero ¿cómo creamos nuestras propias tablas?
 
 Para crear una tabla en SQL, se utiliza la sentencia CREATE TABLE de la siguiente forma:
@@ -1939,8 +1899,7 @@ INSERT INTO alumnos values ('Lucía');
 
 
 
-### Una
-### ** tabla con múltiples columnas
+### Una tabla con múltiples columnas
 Al momento de crear una tabla podemos especificar múltiples columnas, cada una con su nombre y tipo de dato. Por ejemplo, si queremos crear una tabla de productos que incluya el nombre, descripción y precio de cada producto, podemos hacerlo de la siguiente forma:
 
 CREATE TABLE productos (nombre TEXT, descripcion TEXT, precio INT);
@@ -1967,8 +1926,7 @@ insert into alumnos values ('Lucía','Sánchez','12345678')
 
 
 
-### Tab
-### las con distintos tipos de datos
+### Tablas con distintos tipos de datos
 Adicionalmente a los datos de tipo Texto podemos utilizar otros tipos de datos, en este ejercicio abordaremos los 3 siguientes tipos.
 
 - **INTEGER** para almacenar números enteros
@@ -2001,8 +1959,7 @@ insert into usuarios (nombre, apellido, edad, activo, nacimiento) values ('Lucí
 
 
 
-### **Tip**
-### **os reales**
+### **Tipos reales**
 Hasta el momento hemos visto los siguientes tipos de datos:
 
 - **TEXT** para almacenar texto
@@ -2043,8 +2000,7 @@ insert into temperaturas values (27.1);
 
 
 
-### Bor
-### rar un tabla
+### Borrar un tabla
 En SQL podemos utilizar el comando **DROP TABLE** para eliminar una tabla.
 
 Por ejemplo, si queremos eliminar la tabla **temperaturas** que creamos en el ejercicio anterior, podemos hacerlo con la siguiente query:
@@ -2091,8 +2047,7 @@ insert into temperaturas Values ('Santiago',23.0,'2024-01-02')
 
 
 
-### Act
-### ualizar una tabla
+### Actualizar una tabla
 En este ejercicio aprenderemos a añadir una columna a una tabla existente. Para ello, utilizaremos la sentencia ALTER TABLE, que nos permite modificar la definición de una tabla.
 
 La sintaxis para lograrlo es la siguiente:
@@ -2140,8 +2095,7 @@ insert into productos (nombre, precio, descripcion) values ('Camisa XL', 1000.00
 ')
 
 
-### **Int**
-### **roducción a restricciones**
+### **Introducción a restricciones**
 #### **Ideas clave**
 - Las restricciones o **constraints** en inglés, son reglas que se pueden aplicar a las columnas de una tabla.
 - La restricción NOT NULL es un tipo de restricción que impide que se ingresen valores nulos en una columna.
@@ -2209,8 +2163,7 @@ INSERT INTO empleados (nombre, apellido) VALUES ('Pedro', 'Pérez');
 
 
 
-### Agr
-### egar una restricción a una tabla existente
+### Agregar una restricción a una tabla existente
 #### **Ideas clave**
 - Las restricciones o **constraints** en inglés son reglas que se pueden aplicar a las columnas de una tabla.
 - Se puede agregar una restricción al momento de crear una tabla.
@@ -2315,8 +2268,7 @@ ALTER TABLE personas2 RENAME TO personas;
 
 
 
-### Res
-### tricción unique
+### Restricción unique
 #### **Ideas clave**
 - Existen distintos tipos de restricciones que se pueden aplicar a las columnas de una tabla.
 - La restricción de unicidad, o **UNIQUE**, nos permite evitar duplicados en una columna específica.
@@ -2443,8 +2395,7 @@ ALTER TABLE personas2 RENAME TO personas;
 
 
 
-### Res
-### tricción unique
+### Restricción unique
 #### **Ideas clave**
 - Existen distintos tipos de restricciones que se pueden aplicar a las columnas de una tabla.
 - La restricción de unicidad, o **UNIQUE**, nos permite evitar duplicados en una columna específica.
@@ -2504,8 +2455,7 @@ insert into productos (nombre, codigo, precio) values('Camisa XL','CAM-002',1000
 
 
 
-### Res
-### tricciones con check
+### Restricciones con check
 #### **Ideas clave**
 - Existen distintos tipos de restricciones que se pueden aplicar a las columnas de una tabla.
 - La restricción de no nulidad, o **NOT NULL**, impide que se ingresen valores nulos en una columna.
@@ -2570,8 +2520,7 @@ insert into Productos (nombre, precio, stock) values('Camisa XL', 1000.00,3);
 
 
 
-### Cla
-### ve primaria
+### Clave primaria
 #### **Ideas clave**
 - Existen distintos tipos de restricciones que se pueden aplicar a las columnas de una tabla como **NOT NULL**, **UNIQUE** y **CHECK**.
 - La restricción **Primary Key** impide que se ingresen valores nulos y asegura que no haya duplicados en una columna específica. Para efectos prácticos, podemos decir que es una combinación de **Unique** y **Not Null**
@@ -2640,8 +2589,7 @@ insert into posts (id, title, content) values(3,'Temas Avanzados', 'Explora conc
 
 
 
-### Aut
-### oincremental
+### Autoincremental
 #### **Ideas clave**
 - La restricción **Primary Key** impide que se ingresen valores nulos y asegura que no haya duplicados en una columna específica. Para efectos prácticos, podemos decir que es una combinación de **Unique** y **Not Null**.
 - Los campos autoincrementales nos permiten generar un valor único de forma automática para cada registro que insertemos en una tabla.
@@ -2714,8 +2662,7 @@ INSERT INTO usuarios (nombre, fecha\_creacion) values('María', '2024-01-04');
 
 
 
-### **Aut**
-### **oincremental parte 2**
+### **Autoincremental parte 2**
 #### **Ideas clave**
 - Si un campo de clave primaria es un número entero, se convierte automáticamente en un campo autoincremental en **SQLITE**.
 - Si se ingresa un registro con un valor mayor al de la secuencia actual, la base de datos se encarga de actualizar la secuencia para que el siguiente registro tenga un valor mayor al del registro que acabamos de insertar.
@@ -2785,8 +2732,7 @@ INSERT INTO transacciones (monto,fecha) values (5000.00,'2024-01-05');
 
 
 
-### **Pri**
-### **mary key y texto**
+### **Primary key y texto**
 La clave primaria no está limitada exclusivamente a valores numéricos; también se pueden utilizar datos de texto. Tomemos, por ejemplo, una tabla de personas, donde podríamos emplear la dirección de correo electrónico como clave primaria, ya que cada individuo posee una dirección de correo única.
 
 En SQLite, los campos que son de tipo INTEGER y se designan como PRIMARY KEY no pueden contener valores nulos. No obstante, a diferencia de otros sistemas de gestión de bases de datos como MySQL o PostgreSQL, cuando se utiliza PRIMARY KEY con tipos de datos como texto u otros, se permite que el valor sea nulo.
@@ -2835,8 +2781,7 @@ insert into personas (email, nombre, apellido) values ('example3@example.com', '
 
 
 
-### **Cla**
-### **ve Foránea**
+### **Clave Foránea**
 En este ejercicio introduciremos el concepto de **clave foránea** o **foreign key**.
 
 La clave foránea es una restricción que se le puede agregar a una columna de una tabla para indicar que los valores que se inserten en esa columna deben existir en otra tabla.
@@ -2910,8 +2855,7 @@ ALTER TABLE articulos ADD COLUMN categoria\_id integer REFERENCES categorias(id)
 
 
 
-### Pk 
-### y fks
+### Pk y fks
 Los conceptos de clave primaria y clave foránea son fundamentales para el diseño de bases de datos y los ocuparemos tan frecuentemente que los abreviare como PK **Primary Key** y FK **Foreign Key** respectivamente.
 
 Con la clave primaria podemos identificar de forma única cada registro de una tabla, y con la clave foránea podemos relacionar dos tablas entre si y evitar que existan registros que no tengan una relación válida.
@@ -2976,8 +2920,7 @@ delete from transacciones where usuario\_id = 2;
 
 
 
-### Múl
-### tiples tablas
+### Múltiples tablas
 #### **Ideas clave**
 - La cláusula JOIN permite combinar datos de varias tablas en una única tabla de resultados.
 - Para realizar la unión, es necesario especificar las tablas que se desean unir y la condición de unión correspondiente.
@@ -3207,8 +3150,7 @@ t1.email = t2.email;
 
 
 
-### Sel
-### eccionando algunos atributos
+### Seleccionando algunos atributos
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Para hacer la unión, debemos especificar las tablas que queremos unir y la condición de unión.
@@ -3330,8 +3272,7 @@ usuarios.email = notas.email;
 
 
 
-### **oi**
-### **n sin resultados**
+### **Join **n sin resultados**
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Para hacer la unión, debemos especificar las tablas que queremos unir y la condición de unión.
@@ -3402,8 +3343,7 @@ usuarios.email = datos\_contacto.email;
 
 
 
-### Ord
-### en de cláusulas
+### Orden de cláusulas
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Para hacer la unión, debemos especificar las tablas que queremos unir y la condición de unión.
@@ -3459,8 +3399,7 @@ t1.email= t2.email where t1.email='juan.perez@example.com'
 
 
 
-### Agr
-### upar por múltiples columnas
+### Agrupar por múltiples columnas
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Para hacer la unión, debemos especificar las tablas que queremos unir y la condición de unión.
@@ -3567,8 +3506,7 @@ limit 1
 
 
 
-### Rel
-### aciones 1 a 1
+### Relaciones 1 a 1
 #### **Ideas clave**
 - La cardinalidad de una relación es la cantidad de elementos de una tabla que pueden estar relacionados con los de otra tabla.
 - Dependiendo de como se modelen las relaciones entre tablas, se pueden tener relaciones de uno a uno, uno a muchos o muchos a muchos.
@@ -3636,8 +3574,7 @@ on t1.id=t2.vehiculo\_id
 
 
 
-### **Rel**
-### **aciones 1 a n**
+### **Relaciones 1 a n**
 #### **Ideas clave**
 - La cardinalidad de una relación es la cantidad de elementos de una tabla que pueden estar relacionados con los de otra tabla.
 - Dependiendo de como se modelen las relaciones entre tablas, se pueden tener relaciones de *uno a uno*, *uno a muchos* o *muchos a muchos*.
@@ -3706,8 +3643,7 @@ Tabla **paises**
 Se pide crear una consulta que muestre toda la información de los países junto a su continente correspondiente. Observa dentro de los resultados que un país pertenece a un único continente, pero un continente puede tener varios países.
 
 
-### Rel
-### aciones 1 a n
+### Relaciones 1 a n
 #### **Ideas clave**
 - La cardinalidad de una relación es la cantidad de elementos de una tabla que pueden estar relacionados con los de otra tabla.
 - Dependiendo de como se modelen las relaciones entre tablas, se pueden tener relaciones de uno a uno, uno a muchos o muchos a muchos.
@@ -3783,8 +3719,7 @@ inner join paises t2 on t1.CONTINENTE\_ID= t2.CONTINENTE\_ID
 
 
 
-### Rel
-### aciones n a n
+### Relaciones n a n
 #### **Ideas clave**
 - La cardinalidad de una relación es la cantidad de elementos de una tabla que pueden estar relacionados con los de otra tabla.
 - Dependiendo de como se modelen las relaciones entre tablas, se pueden tener relaciones de uno a uno, uno a muchos o muchos a muchos.
@@ -3897,8 +3832,7 @@ JOIN colores T3 ON T2.color\_id = T3.color\_id;
 
 
 
-### Car
-### acterísticas de la tabla intermedia
+### Características de la tabla intermedia
 #### **Ideas clave**
 - En una relación muchos a muchos, un registro de una tabla puede estar relacionado con uno o varios registros de otra tabla, y viceversa.
 - Las bases de datos relacionales no permiten relaciones muchos a muchos directamente, por lo que se necesita una tabla intermedia que relacione a las tablas principales.
@@ -4095,8 +4029,7 @@ HAVING VECES > 1
 
 
 
-### **Con**
-### ` `**restricción de unicidad**
+### **Conrestricción de unicidad**
 #### **Ideas clave**
 - La tabla intermedia debe tener una columna que sea clave foránea de cada una de las tablas principales.
 - Si hay una restricción de unicidad, se garantiza que no haya registros duplicados en la tabla intermedia. Esto se logra con una clave primaria compuesta de las claves foráneas de las tablas principales.
@@ -4204,8 +4137,7 @@ Se tiene una **tabla** de **usuarios** con las columnas nombre y apellido. U
 
 select substr(apellido,2 ,3) as tres\_caracteres\_del\_apellido from usuarios where nombre ='María'
 
-### Inn
-### er Join
+### Inner Join
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Existen varios tipos de joins, cuando no se especifica el tipo de join se utiliza INNER JOIN.
@@ -4253,8 +4185,7 @@ notas t2 on t1.email=t2.email
 
 
 
-### **Inn**
-### **er Join con diagrama de venn**
+### **Inner Join con diagrama de venn**
 #### **Ideas clave**
 - Los diagramas de Venn son una forma visual de representar conjuntos y operaciones entre ellos.
 - Podemos utilizar los diagramas de Venn para visualizar lo que sucede con los registros de las tablas al realizar distintos tipos de JOIN.
@@ -4323,8 +4254,7 @@ En el editor de código a continuación, realiza una consulta que muestre el nom
 
 
 
-### Inn
-### er Join con diagrama de venn
+### Inner Join con diagrama de venn
 #### **Ideas clave**
 - Los diagramas de Venn son una forma visual de representar conjuntos y operaciones entre ellos.
 - Podemos utilizar los diagramas de Venn para visualizar lo que sucede con los registros de las tablas al realizar distintos tipos de JOIN.
@@ -4398,8 +4328,7 @@ inner join peliculas t2 on t1.actor\_id =t2.actor\_id
 
 
 
-### Lef
-### t Join
+### Left Join
 #### **Ideas clave**
 - La cláusula JOIN nos permite combinar los datos de varias tablas en una única tabla de resultados.
 - Existen distintos tipos de JOIN. La diferencia entre los tipos de joins radica en cómo se manejan los registros que no tienen una clave común en ambas tablas.
@@ -4504,8 +4433,7 @@ SELECT t1.email, t1.nombre, t1.edad, t2.email, t2.departamento
 FROM empleados t1 LEFT JOIN departamentos t2 ON t1.email = t2.email;
 
 
-### **Lef**
-### **t Join en diagrama de venn**
+### **Left Join en diagrama de venn**
 #### **Ideas clave**
 - Los diagramas de Venn son una forma visual de representar conjuntos y operaciones entre ellos.
 - Podemos utilizar los diagramas de Venn para visualizar lo que sucede con los registros de las tablas al realizar distintos tipos de JOIN.
@@ -4568,8 +4496,7 @@ RIGHT JOIN Profesion t2 ON t2.id = t1.profesion\_id;
 
 
 
-### Lef
-### t Join en diagrama de venn
+### Left Join en diagrama de venn
 #### **Ideas clave**
 - Los diagramas de Venn son una forma visual de representar conjuntos y operaciones entre ellos.
 - Podemos utilizar los diagramas de Venn para visualizar lo que sucede con los registros de las tablas al realizar distintos tipos de JOIN.
@@ -4634,8 +4561,7 @@ LEFT join Personas t1 ON T1.PROFESION\_ID=T2.ID
 
 
 
-### Rig
-### ht Join
+### Right Join
 #### **Ideas clave**
 - Existen distintos tipos de JOIN.
 - Al utilizar un INNER JOIN, si en una de las tablas no está la clave correspondiente, ese registro no aparecerá en el resultado final.
@@ -4720,8 +4646,7 @@ RIGHT JOIN departamentos d ON d.email = e.email;
 
 
 
-### Lef
-### t Join y Right Join
+### Left Join y Right Join
 #### **Ideas clave**
 - Al utilizar un LEFT JOIN, si en la tabla izquierda está la clave pero en la tabla derecha no, el registro de la tabla izquierda aparecerá en el resultado final con valores NULL en los campos de la tabla derecha.
 - Al utilizar un RIGHT JOIN, si en la tabla derecha está la clave pero en la tabla izquierda no, el registro de la tabla derecha aparecerá en el resultado final con valores NULL en los campos de la tabla izquierda.
@@ -4882,8 +4807,7 @@ LEFT JOIN precios ON productos.producto\_id = precios.producto\_id;
 
 
 
-### Ide
-### ntificando tipos de join
+### Identificando tipos de join
 #### **Ideas clave:**
 - Existen múltiples tipos de JOIN
 - Hasta el momento hemos visto INNER JOIN, LEFT JOIN y RIGHT JOIN
@@ -4932,8 +4856,7 @@ from autores
 INNER join libros on autores.id = libros.id\_autor
 
 
-### Ide
-### ntificando tipos de join parte 2
+### Identificando tipos de join parte 2
 #### **Guía útil para identificar el tipo de join**
 1. **INNER JOIN**
    1. **Cuándo usarlo:** Cuando necesitas sólo las filas donde haya coincidencias en ambas tablas.
@@ -4989,8 +4912,7 @@ FROM empleados left JOIN proyectos ON empleados.id\_proyecto = proyectos.id
 
 
 
-### Ide
-### ntificando tipos de join parte 3
+### Identificando tipos de join parte 3
 #### **Guía útil para identificar el tipo de join**
 1. **INNER JOIN**
    1. **Cuándo usarlo:** Cuando necesitas sólo las filas donde haya coincidencias en ambas tablas.
@@ -5031,8 +4953,7 @@ FROM empleados right JOIN proyectos ON empleados.id\_proyecto = proyectos.id
 
 
 
-### Ful
-### l outer join
+### Full outer join
 #### **Ideas clave**
 - Existen distintos tipos de JOIN.
 - Al utilizar un INNER JOIN, si en una de las tablas no está la clave correspondiente, ese registro no aparecerá en el resultado final.
@@ -5105,8 +5026,7 @@ FULL OUTER JOIN
 
 
 
-### **Ful**
-### **l outer join parte 2**
+### **Full outer join parte 2**
 #### Ideas clave
 - Al utilizar un LEFT JOIN, si en la tabla izquierda está la clave pero en la tabla derecha no, el registro de la tabla izquierda aparecerá en el resultado final con valores NULL en los campos de la tabla derecha.
 - Al utilizar RIGHT JOIN, si en la tabla derecha está la clave pero en la tabla izquierda no, el registro de la tabla derecha aparecerá en el resultado final con valores NULL en los campos de la tabla izquierda.
@@ -5195,8 +5115,7 @@ SELECT \* FROM personas p LEFT JOIN profesion pr ON p.profesion\_id = pr.id WHER
 
 
 
-### Rig
-### ht excluding join
+### Right excluding join
 #### **Ideas clave**
 - Al utilizar un LEFT JOIN, si en la tabla izquierda está la clave pero en la tabla derecha no, el registro de la tabla izquierda aparecerá en el resultado final con valores NULL en los campos de la tabla derecha.
 - Un left excluding join es una combinación de left join con una cláusula WHERE para mostrar los registros de la tabla izquierda que no tienen coincidencias en la tabla derecha.
@@ -5279,8 +5198,7 @@ SELECT \* FROM cursos c right JOIN docentes d ON d.id = c.docente\_id WHERE c.id
 
 
 
-### Ful
-### l outer excluding join
+### Full outer excluding join
 #### **Ideas clave**
 - Un left excluding join es una combinación de left join con una cláusula WHERE para mostrar los registros de la tabla izquierda que no tienen coincidencias en la tabla derecha.
 - Un right excluding join es una combinación de right join con una cláusula WHERE para mostrar los registros de la tabla derecha que no tienen coincidencias en la tabla izquierda.
@@ -5361,8 +5279,7 @@ WHERE tabla\_A.id\_empleado IS NULL;
 
 
 
-### Nat
-### ural Join
+### Natural Join
 #### **Ideas clave**
 - Natural Join es un JOIN que adicionalmente asume que las columnas con el mismo nombre son las columnas de unión.
 - La ventaja de usar NATURAL JOIN es que simplifica la escritura de la consulta, pero solo es útil cuando las columnas de unión tienen el mismo nombre y tipo de datos en ambas tablas.
@@ -5491,8 +5408,7 @@ NATURAL LEFT JOIN inscripciones;
 
 
 
-### Sel
-### f Join
+### Self Join
 #### **Ideas clave**
 - Un self join se utiliza para combinar una tabla consigo misma.
 - Self join no es un tipo de join específico, es solo el término utilizado para referirse a la operación de combinar una tabla consigo misma.
@@ -5550,8 +5466,7 @@ FROM empleados e1
 LEFT JOIN empleados e2 ON e1.id\_supervisor = e2.id\_empleado;
 
 
-### Sel
-### f Join
+### Self Join
 #### **Ideas clave**
 - Un self join se utiliza para combinar una tabla consigo misma.
 - Self join no es un tipo de join específico, es solo el término utilizado para referirse a la operación de combinar una tabla consigo misma.
@@ -5609,8 +5524,7 @@ SELECT e1.nombre AS nombre\_cliente, e2.nombre AS nombre\_cliente\_referente FRO
 
 
 
-### **Sel**
-### **f Join parte 2**
+### **Self Join parte 2**
 #### **Ideas clave**
 - Un self join se utiliza para combinar una tabla consigo misma.
 - Self join no es un tipo de join específico, es solo el término utilizado para referirse a la operación de combinar una tabla consigo misma.
@@ -5636,8 +5550,7 @@ SELECT e1.nombre , e2.nombre AS nombre\_amigo\_conectado FROM amigos e1 inner JO
 
 
 
-### **Cro**
-### **ss Join**
+### **Cross Join**
 #### Ideas clave
 - Cross Join genera el producto cartesiano de dos tablas.
 - Cross Join no requiere una condición de unión, dado que combina todas las filas de la primera tabla con todas las filas de la segunda tabla.
@@ -5727,8 +5640,7 @@ SELECT numero, pinta FROM numeros CROSS JOIN pintas ORDER BY numero, pinta;
 
 
 
-### Joi
-### n con funciones agregadas
+### Join con funciones agregadas
 #### **Ideas clave:**
 - **Combinar datos de varias tablas**: La claúsula JOIN nos permite combinar filas de dos o más tablas.
 - **Escoger el tipo de JOIN**: La elección del tipo de JOIN depende de si queremos contabilizar filas sin coincidencias, si es así usamos LEFT JOIN, si no usamos INNER JOIN.
@@ -5811,8 +5723,7 @@ ORDER BY u.nombre asc;
 
 
 
-### Int
-### roducción a la primera forma normal
+### Introducción a la primera forma normal
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
@@ -5864,8 +5775,7 @@ DELETE FROM personas WHERE ID NOT IN ( SELECT MAX(ID) FROM personas where nombre
 
 
 
-### Con
-### viertiendo a 1fn
+### Conviertiendo a 1fn
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
@@ -5974,8 +5884,7 @@ SELECT id AS "ID", producto AS "PRODUCTO", "Categoría" AS "CATEGORÍA", precio 
 
 
 
-### Gru
-### pos repetitivos
+### Grupos repetitivos
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
@@ -6045,8 +5954,7 @@ INNER JOIN proyectos p ON e.id = p.id\_empleado;
 
 
 
-### Gru
-### pos repetitivos parte 2
+### Grupos repetitivos parte 2
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
@@ -6108,8 +6016,7 @@ SELECT id, productos, LENGTH(PRODUCTOS) - LENGTH(REPLACE(PRODUCTOS, ' ', '')) + 
 
 
 
-### Gru
-### pos repetitivos parte 3
+### Grupos repetitivos parte 3
 #### **Ideas clave**
 - Los grupos repetitivos son un indicio de que una tabla no cumple con la primera forma normal.
 - Hay grupos repetitivos cuando tienes columnas que se repiten en una tabla, ejemplo: proyecto1, proyecto2, proyecto3.
@@ -6182,8 +6089,7 @@ order by d.nombre\_departamento;
 
 
 
-### Dep
-### endencias parciales
+### Dependencias parciales
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
@@ -6253,8 +6159,7 @@ INNER JOIN cursos c ON n.ID\_de\_curso = c.ID\_de\_curso;
 
 
 
-### Dep
-### endencias transitivas
+### Dependencias transitivas
 #### **Ideas clave**
 - La redundancia en una base de datos puede llevar a inconsistencias a la hora de identificar el dato correcto, actualizarlo o eliminarlo.
 - La normalización es un proceso de eliminación de redundancia en una base de datos
